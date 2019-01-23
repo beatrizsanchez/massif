@@ -122,6 +122,8 @@ public abstract class AbstractSimulinkHandler extends AbstractHandler {
                 script.execute();
             }
         }
+        evaluator.evaluateCommand("massif = massif_functions()", 0);
+
     }
 
 }
