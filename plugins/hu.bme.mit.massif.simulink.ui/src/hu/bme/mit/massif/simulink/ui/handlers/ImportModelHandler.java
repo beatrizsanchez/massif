@@ -50,8 +50,8 @@ import com.google.common.collect.Maps;
  */
 public class ImportModelHandler extends AbstractSimulinkHandler {
 
-    protected static final String EXCEPTION_WHILE_IMPORTING = "Exception occurred while importing model!";
-    protected static final String EXCEPTION_WHILE_SAVING_MODEL = "Exception occurred while saving model!";
+	public static final String EXCEPTION_WHILE_IMPORTING = "Exception occurred while importing model!";
+    public static final String EXCEPTION_WHILE_SAVING_MODEL = "Exception occurred while saving model!";
 
     /*
      * (non-Javadoc)
@@ -78,7 +78,7 @@ public class ImportModelHandler extends AbstractSimulinkHandler {
         return null;
     }
 
-    private ImportSettings prepareSettings() {
+    public ImportSettings prepareSettings() {
         ImportSettings settings = new ImportSettings();
         // Import mode
         settings.traverseMode = getPreferenceStringValue(PreferenceConstants.IMPORT_TRAVERSE_MODE, ImportMode.SHALLOW.toString());
@@ -88,9 +88,22 @@ public class ImportModelHandler extends AbstractSimulinkHandler {
         return settings;
     }
 
-    private static class ImportSettings {
+    public static class ImportSettings {
         String traverseMode;
         ICommandEvaluator commandEvaluator;
+        
+        public String getTraverseMode() {
+			return traverseMode;
+		}
+        public ICommandEvaluator getCommandEvaluator() {
+			return commandEvaluator;
+		}
+        public void setTraverseMode(String traverseMode) {
+			this.traverseMode = traverseMode;
+		}
+        public void setCommandEvaluator(ICommandEvaluator commandEvaluator) {
+			this.commandEvaluator = commandEvaluator;
+		}
     }
 
     protected void handleFile(IFile file, ImportSettings settings) {
